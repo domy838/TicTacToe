@@ -8,11 +8,16 @@ public class GameController : MonoBehaviour
 {
     public List<TMP_Text> buttonList;
     private string playerSide;
+    public GameObject gameOverPanel;
+    public TMP_Text gameOverText;
+    private int moveCount;
 
     void Start () 
     {
         SetGameControllerReferenceOnButtons();
         playerSide = "X";
+        gameOverPanel.SetActive(false);
+        moveCount = 0;
     }
 
     void SetGameControllerReferenceOnButtons() 
@@ -52,15 +57,19 @@ public class GameController : MonoBehaviour
         {
             GameOver();
         }
+        moveCount++;
+        if (moveCount >= 9) 
+        { 
+            SetGameOverText("It's a draw!");
+        }
         ChangeSides();
     }
 
     void GameOver() 
     {
-        for (int i=0; i<buttonList.Count; i++)
-        {
-            buttonList[i].GetComponentInParent<Button>().interactable = false;
-        }
+        SetBoardInteractable(false);
+        SetGameOverText(playerSide + " Wins!");
+        moveCount --;
     }
 
     void ChangeSides() 
@@ -72,6 +81,31 @@ public class GameController : MonoBehaviour
         else
         {
             playerSide = "X";
+        }
+    }
+
+    void SetGameOverText(string value) 
+    {
+        gameOverPanel.SetActive(true);
+        gameOverText.text = value;
+    }
+
+    public void RestartGame() 
+    {
+        playerSide = "X"; 
+        moveCount = 0; 
+        gameOverPanel.SetActive(false);
+        SetBoardInteractable(true);
+        for (int i=0; i<buttonList.Count; i++)
+        {
+            buttonList[i].text = ""; 
+        }
+    }
+    void SetBoardInteractable (bool toggle); 
+    {
+        for (int i = 0; i < buttonList.Count; i++) 
+        { 
+            buttonList[i].GetComponentInParent<Button>().interactable = toggle; 
         }
     }
 }
