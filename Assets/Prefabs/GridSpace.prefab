@@ -122,7 +122,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 4602153086128869168}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 450263981427915784}
+        m_TargetAssemblyTypeName: GridSpace, Assembly-CSharp
+        m_MethodName: SetSpace
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &450263981427915784
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -135,6 +147,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d0bf7129cc4c4534db87790d71381d37, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  button: {fileID: 4385052646151846233}
+  buttonText: {fileID: 2314935493870800445}
+  playerSide: X
 --- !u!1 &4709148385156580053
 GameObject:
   m_ObjectHideFlags: 0
