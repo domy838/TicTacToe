@@ -17,7 +17,7 @@ public class GridSpace : MonoBehaviour
         gameController.EndTurn();
     }
 
-    public void SetGameControllerReference (GameController controller) 
+    public void SetGameControllerReference(GameController controller) 
     {
         gameController = controller;
     }
