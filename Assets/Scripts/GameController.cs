@@ -101,7 +101,7 @@ public class GameController : MonoBehaviour
             buttonList[i].text = ""; 
         }
     }
-    void SetBoardInteractable (bool toggle); 
+    void SetBoardInteractable (bool toggle) 
     {
         for (int i = 0; i < buttonList.Count; i++) 
         { 
