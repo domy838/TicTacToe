@@ -35,11 +35,9 @@ public class GameController : MonoBehaviour
     void Start () 
     {
         SetGameControllerReferenceOnButtons();
-        playerSide = "X";
         gameOverPanel.SetActive(false);
         moveCount = 0;
         restartButton.SetActive(false);
-        SetPlayerColors(playerX, playerO);
     }
 
     void SetGameControllerReferenceOnButtons() 
@@ -137,7 +135,6 @@ public class GameController : MonoBehaviour
 
     public void RestartGame() 
     {
-        playerSide = "X"; 
         moveCount = 0; 
         gameOverPanel.SetActive(false);
         SetBoardInteractable(true);
@@ -146,7 +143,6 @@ public class GameController : MonoBehaviour
             buttonList[i].text = ""; 
         }
         restartButton.SetActive(false);
-        SetPlayerColors(playerX, playerO);
     }
 
     void SetBoardInteractable (bool toggle) 
@@ -163,5 +159,18 @@ public class GameController : MonoBehaviour
         newPlayer.text.color = activePlayerColor.textColor; 
         oldPlayer.panel.color = inactivePlayerColor.panelColor; 
         oldPlayer.text.color = inactivePlayerColor.textColor;
-    }  
+    }
+
+    public void SetStartingSide (string startingSide) 
+    { 
+        playerSide = startingSide; 
+        if (playerSide == "X") 
+        {
+            SetPlayerColors(playerX, playerO); 
+        } 
+        else 
+        {
+            SetPlayerColors(playerO, playerX); 
+        }
+    }
 }
